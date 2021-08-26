@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BOOTSTRAP-START -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- BOOTSTRAP-END -->
+
+    <!-- FONTAWESOME-CDN-START -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <!-- FONTAWESOME-CDN-END -->
+
+
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>tinymce.init({ selector: 'textarea' });</script>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Edit-Blog</title>
+</head>
+
+<body>
+
+    <div class="container text-center text-white mt-5">
+        <div>
+            <h3>A Node JS FullStack Blog Application</h3>
+        </div>
+        <div>
+            <span>LifeStyle</span> | <span>Fashion</span> | <span>Travel</span> | <span>Dream</span>
+        </div>
+        <div class="mt-5">
+            <h2>EDIT BLOG</h2>
+        </div>
+    </div>
+
+    <div class="container mt-5 text-white">
+        <div class="form-group">
+            <label for="title">
+                <%=name%>
+            </label>
+            <input type="title" class="form-control" id="title" aria-describedby="emailHelp" placeholder="Enter Title">
+        </div>
+        <div class="form-group">
+            <label for="author">Author</label>
+            <textarea type="text" class="form-control" id="author" placeholder="Enter Author Name"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <textarea type="text" class="form-control" id="description" placeholder="Description"></textarea>
+        </div>
+        <button type="button" class="btn btn-secondary"><i class="fas fa-remove-format"></i>
+            Cancel</button>
+        <button type="button" class="btn btn-primary"><i class="fas fa-save" /></i>
+            Save</button>
+    </div>
+</body>
+
+</html>
