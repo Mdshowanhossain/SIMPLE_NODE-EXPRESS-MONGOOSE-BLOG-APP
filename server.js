@@ -3,12 +3,16 @@ require('./database/db');
 const BlogSchema = require('./models/BlogSchema');
 const BlogRoute = require('./routes/blog');
 
-const PORT = process.env.PORT || 8000;
+const methodOverride = require('method-override')
+
+const PORT = 8000;
 
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
+
 
 app.get('/', async (req, res) => {
 
@@ -17,7 +21,7 @@ app.get('/', async (req, res) => {
     res.render('homeCard', { blogs: blogs })
 })
 
-// app.get('/blog', (req, res) => {
+// app.get('/edit', (req, res) => {
 //     res.send('sohan')
 // })
 

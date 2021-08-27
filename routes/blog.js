@@ -2,6 +2,9 @@ const express = require('express');
 const BLOG = require('../models/BlogSchema');
 const route = express.Router();
 
+
+
+
 route.get('/new', (req, res) => {
     res.render('postBlog')
 })
@@ -20,8 +23,8 @@ route.get('/:slug', async (req, res) => {
 })
 
 
-route.post('/blogsss', async (req, res) => {
-    console.log(req.body)
+route.post('/post', async (req, res) => {
+    // console.log(req.body)
     let blog = await new BLOG({
         title: req.body.title,
         author: req.body.author,
@@ -37,9 +40,37 @@ route.post('/blogsss', async (req, res) => {
 })
 
 
+route.get('/edit/:id', async (req, res) => {
+    let blog = await BLOG.findById(req.params.id);
+    try {
+        blog = await blog.save()
+        res.render('editBlog', { blog: blog })
+    } catch (err) {
+        console.log(err)
+    }
+})
 
+route.put('/edit/:id', async (req, res) => {
 
+    console.log(req.body)
+    res.send(req.params.id)
 
+    // req.blog = await BLOG.findById(req.params.id)
+
+    // let blog = req.blog
+    // blog.title = req.body.title
+    // blog.author = req.body.author
+    // blog.description = req.body.description
+
+    // console.log(req.body)
+    // try {
+    //     blog = await blog.save();
+    //     res.redirect('/')
+    // } catch (err) {
+    //     console.log(err)
+    //     res.redirect(`blogs/edit/${blog.id}`, { blog: blog })
+    // }
+})
 
 
 

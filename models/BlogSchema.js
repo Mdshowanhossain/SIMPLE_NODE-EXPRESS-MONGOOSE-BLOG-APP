@@ -12,7 +12,7 @@ const blog = new mongoose.Schema({
     title: {
         type: String,
         require: true,
-        unique: true,
+
         trim: true,
     },
     author: {
@@ -31,7 +31,7 @@ const blog = new mongoose.Schema({
     slug: {
         type: String,
         slug: "title",
-        unique: true,
+
         slug_padding_size: 2,
     },
     snippet: {
