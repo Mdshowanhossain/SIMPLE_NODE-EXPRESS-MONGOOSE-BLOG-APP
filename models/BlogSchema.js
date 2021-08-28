@@ -12,7 +12,6 @@ const blog = new mongoose.Schema({
     title: {
         type: String,
         require: true,
-
         trim: true,
     },
     author: {
@@ -26,12 +25,12 @@ const blog = new mongoose.Schema({
     },
     img: {
         type: String,
-        default: "https://imgv3.fotor.com/images/homepage-feature-card/Fotor-AI-photo-enhancement-tool.jpg",
+        default: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuiuiYY--ENGKHCxoshOIavDEMIyHjKkpARw&usqp=CAU"
     },
     slug: {
         type: String,
         slug: "title",
-
+        unique: true,
         slug_padding_size: 2,
     },
     snippet: {

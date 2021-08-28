@@ -18,6 +18,7 @@
     "method-override": "^3.0.0",
     "mongoose": "^6.0.0",
     "mongoose-slug-generator": "^1.0.4",
+    "multer": "^1.4.3",
     "nodemon": "^2.0.12",
     "string-strip-html": "^8.3.0"
   }

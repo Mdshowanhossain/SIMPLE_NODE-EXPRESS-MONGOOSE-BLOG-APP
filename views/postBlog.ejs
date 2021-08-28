@@ -16,16 +16,12 @@
     <!-- FONTAWESOME-CDN-END -->
 
 
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>tinymce.init({ selector: 'textarea' });</script>
-
 
     <link rel="stylesheet" href="../css/style.css">
     <title>Form</title>
 </head>
 
 <body>
-
     <div class="container text-center text-white mt-5">
         <div>
             <h3>A Node JS FullStack Blog Application</h3>
@@ -37,8 +33,7 @@
             <h2>NEW BLOG</h2>
         </div>
     </div>
-
-    <form action="/blogs/post" method="POST">
+    <form action="/blogs/post" method="POST" enctype="multipart/form-data">
         <div class="container mt-5 text-white">
             <div class="form-group">
                 <label for="title">Title</label>
@@ -57,16 +52,15 @@
             </div>
 
             <div class="form-group">
-                <label for="exampleFormControlFile1">Upload Image</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1" name="file">
-
+                <label for="image">Upload Image</label>
+                <input type="file" class="form-control-file" id="image" name="image">
             </div>
+
             <a href="/" type="button" class="btn btn-secondary"><i class="fas fa-remove-format"></i>
                 Cancel</a>
             <button type="submit" class="btn btn-primary"><i class="fas fa-save" /></i>
                 Save</button>
         </div>
-
     </form>
 </body>
 

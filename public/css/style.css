@@ -16,8 +16,11 @@ body {
   margin-right: 250px;
 }
 .relative {
-  position: relative;
-  margin-top: 20px;
+  /* position: relative;
+  margin-top: 20px; */
+  float: right;
+  /* margin-top: 20px; */
+  margin-right: 25rem;
 }
 .btn-success {
   margin-left: 25rem;
@@ -26,4 +29,8 @@ body {
 .Create {
   margin-top: 2rem;
   margin-left: 25rem;
+}
+.card-img-top {
+  width: 20%;
+  height: 20%;
 }

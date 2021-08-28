@@ -1,9 +1,23 @@
 const express = require('express');
 const BLOG = require('../models/BlogSchema');
+const multer = require('multer');
 const route = express.Router();
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, './uploads/images');
+    },
+    fieldname: function (req, file, cb) {
+        cb(null, Date.now().toLocaleString() + file.originalname)
+    },
+})
 
-
+const upload = multer({
+    storage: storage,
+    limits: {
+        fileSize: 1024 * 1024 * 3,
+    }
+})
 
 route.get('/new', (req, res) => {
     res.render('postBlog')
@@ -23,12 +37,13 @@ route.get('/:slug', async (req, res) => {
 })
 
 
-route.post('/post', async (req, res) => {
-    // console.log(req.body)
+route.post('/post', upload.single('image'), async (req, res) => {
+    console.log(req.file)
     let blog = await new BLOG({
         title: req.body.title,
         author: req.body.author,
         description: req.body.description,
+        img: req.file.filename,
     })
     try {
         blog = await blog.save();
@@ -50,40 +65,32 @@ route.get('/edit/:id', async (req, res) => {
     }
 })
 
-route.put('/edit/:id', async (req, res) => {
+route.post('/edit/:id', async (req, res) => {
 
-    console.log(req.body)
-    res.send(req.params.id)
-
-    // req.blog = await BLOG.findById(req.params.id)
-
-    // let blog = req.blog
-    // blog.title = req.body.title
-    // blog.author = req.body.author
-    // blog.description = req.body.description
-
-    // console.log(req.body)
-    // try {
-    //     blog = await blog.save();
-    //     res.redirect('/')
-    // } catch (err) {
-    //     console.log(err)
-    //     res.redirect(`blogs/edit/${blog.id}`, { blog: blog })
-    // }
+    try {
+        await BLOG.updateOne({ _id: req.params.id }, {
+            $set: {
+                title: req.body.title,
+                author: req.body.author,
+                description: req.body.description,
+            }
+        })
+        res.redirect('/')
+    } catch (err) {
+        console.log(err)
+        res.redirect('/blogs/')
+    }
 })
 
 
-
-// route.get('/edit', (req, res) => {
-//     // let blog = BLOG.findById(req.params.id);
-//     // res.render('editBlog');
-//     res.render('editBlog', { name: 'sohan' })
-// })
-
-// route.get('/blogs', (req, res) => {
-//     res.send('sohan')
-// })
-
+route.get('/delete/:id', async (req, res) => {
+    try {
+        await BLOG.deleteOne({ _id: req.params.id })
+        res.redirect('/')
+    } catch (err) {
+        console.log(err)
+    }
+})
 
 
 

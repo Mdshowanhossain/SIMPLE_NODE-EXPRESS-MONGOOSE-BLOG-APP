@@ -33,58 +33,55 @@
 
     <div class="relative">
         <a type="button" class="btn btn-success" href="/blogs/new"><i class="fas fa-plus-square"></i> ADD NEW POST</a>
+
+        <% if(blogs.length < 1){%>
+            <p class="text-white Create">No Post! Create A New Post</p>
+            <% } %>
+
     </div>
 
-    <% if(blogs.length < 1){%>
-
-        <p class="text-white Create">No Post! Create A New Post</p>
-        <% } %>
-
-            <% blogs.forEach(blog=>{ %>
-
-                <div class="container mt-5">
-                    <div class="card mt-5">
-                        <div class="row center-block mt-5">
-                            <div class="col-md-4 d-flex align-items-center">
-                                <img class=" ml-2 photo" src=<%=blog.img%>
-                                alt="">
+    <% blogs.forEach(blog=>{ %>
+        <div class="container mt-5">
+            <div class="card mt-5">
+                <div class="row center-block mt-5">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <img class=" ml-2 photo" src=<%-blog.img%>
+                        alt="">
+                    </div>
+                    <div class="col-md-8 mt-2 mr- mb-4 ">
+                        <h2>
+                            <%- blog.title %>
+                        </h2>
+                        <p>
+                            <%- blog.description %>
+                        </p>
+                        <span>
+                            <img class="author" src="../uploads/images/1,630,166,704,799pic2.png" alt="">
+                            <span class="mb-2">AUTHOR: <%= blog.author %></span><br>
+                            <span class="ml-5">
+                                Created At: <%-blog.createdAt%>
+                            </span>
+                        </span><br><br>
+                        <div class="row">
+                            <div class="col-md-3 button">
+                                <a href="blogs/edit/<%= blog.id %>" type="button" class="btn btn-primary"><i
+                                        class="fas fa-pen"></i>
+                                    Edit
+                                </a>
                             </div>
-                            <div class="col-md-8 mt-2 mr- mb-4 ">
-                                <h2>
-                                    <%- blog.title %>
-                                </h2>
-                                <p>
-                                    <%- blog.description %>
-                                </p>
-                                <span>
-                                    <img class="author" src=<%=blog.img%>
-                                    alt="">
-                                    <span class="mb-2">AUTHOR: <%= blog.author %></span><br>
-                                    <span class="ml-5">
-                                        <%-blog.createdAt%>
-                                    </span>
-                                </span><br><br>
-                                <div class="row">
-                                    <div class="col-md-3 button">
-                                        <button href="/" type="button" class="btn btn-secondary"><i
-                                                class="fas fa-step-backward"></i>
-                                            Back</button>
-                                        <button type="button" class="btn btn-outline-success">More</button>
-                                    </div>
-                                    <a href="blogs/edit/<%= blog.id %>" type="button" class="btn btn-primary"><i
-                                            class="fas fa-pen"></i>
-                                        Edit</a>
-                                    <div class="col-md-3">
-                                        <button href="/" type="button" class="btn btn-danger"><i
-                                                class="fas fa-trash-alt"></i>
-                                            Delete</button>
-                                    </div>
-                                </div>
+
+                            <div class="col-md-3">
+                                <a href="blogs/delete/<%= blog.id %>" type="button" class="btn btn-danger"><i
+                                        class="fas fa-trash"></i>
+                                    Delete
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <% }) %>
+            </div>
+        </div>
+        <% }) %>
 </body>
 
 </html>
