@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './uploads/images');
     },
-    fieldname: function (req, file, cb) {
+    filename: function (req, file, cb) {
         cb(null, Date.now().toLocaleString() + file.originalname)
     },
 })
@@ -38,7 +38,7 @@ route.get('/:slug', async (req, res) => {
 
 
 route.post('/post', upload.single('image'), async (req, res) => {
-    console.log(req.file)
+    // console.log(req.file)
     let blog = await new BLOG({
         title: req.body.title,
         author: req.body.author,
