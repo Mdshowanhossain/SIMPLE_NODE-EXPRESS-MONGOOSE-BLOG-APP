@@ -3,9 +3,10 @@ const BLOG = require('../models/BlogSchema');
 const multer = require('multer');
 const route = express.Router();
 
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads/images');
+        cb(null, './public/uploads/images');
     },
     filename: function (req, file, cb) {
         cb(null, Date.now().toLocaleString() + file.originalname)
@@ -38,16 +39,18 @@ route.get('/:slug', async (req, res) => {
 
 
 route.post('/post', upload.single('image'), async (req, res) => {
-    // console.log(req.file)
-    let blog = await new BLOG({
+    console.log('This is Body', req.file)
+
+    let blog = new BLOG({
         title: req.body.title,
         author: req.body.author,
         description: req.body.description,
         img: req.file.filename,
     })
     try {
-        blog = await blog.save();
+        postImage = await blog.save();
         res.redirect(`${blog.slug}`)
+        console.log('I am Post Image', postImage)
     }
     catch (err) {
         console.log(err.message)

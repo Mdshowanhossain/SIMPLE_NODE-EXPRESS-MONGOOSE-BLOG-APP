@@ -45,8 +45,7 @@
             <div class="card mt-5">
                 <div class="row center-block mt-5">
                     <div class="col-md-4 d-flex align-items-center">
-                        <img class=" ml-2 photo" src=<%-blog.img%>
-                        alt="">
+                        <img class=" ml-2 photo" src="uploads\\images\\<%=blog.img %>" alt="">
                     </div>
                     <div class="col-md-8 mt-2 mr- mb-4 ">
                         <h2>
@@ -56,7 +55,7 @@
                             <%- blog.description %>
                         </p>
                         <span>
-                            <img class="author" src="../uploads/images/1,630,166,704,799pic2.png" alt="">
+                            <img class="author" src="uploads\\images\\<%=blog.img %>" alt="" name="img">
                             <span class="mb-2">AUTHOR: <%= blog.author %></span><br>
                             <span class="ml-5">
                                 Created At: <%-blog.createdAt%>
