@@ -37,55 +37,11 @@
         <a type="button" class="btn btn-success" href="/"><i class="fas fa-step-backward"></i>Back</a>
     </div>
 
-    <!-- <div class="container mt-5">
-        <div class="card mt-5">
-            <div class="row center-block mt-5">
-                <div class="col-md-4 d-flex align-items-center">
-                    <img class=" ml-2 photo" src=<%=blog.img %> alt="">
-                </div>
-                <div class="col-md-8 mt-2 mr- mb-4 ">
-                    <h2>
-                        <%= blog.title %>
-                    </h2>
-
-                    <p>
-                        <%- blog.description %>
-                    </p>
-
-
-                    <span>
-                        <img class="author" src="<%=blog.img %>" alt="">
-                        <span class="mb-2">AUTHOR: <%= blog.author %></span><br>
-                        <span class="ml-5">
-                            <%= blog.createdAt %>
-                        </span>
-                    </span><br><br>
-                    <div class="row">
-                        <div class="col-md-3 button">
-                            <button href="/" type="button" class="btn btn-secondary"><i
-                                    class="fas fa-step-backward"></i>
-                                Back</button>
-                            <button type="button" class="btn btn-outline-success">More</button>
-                        </div>
-                        <button type="button" class="btn btn-primary"><i class="fas fa-pen"></i>
-                            Edit</button>
-                        <div class="col-md-3">
-                            <button href="/" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>
-                                Delete</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
 
 
 
     <div class="card mb-3 mt-5 text-center">
-        <img class=" img-fluid "
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuiuiYY--ENGKHCxoshOIavDEMIyHjKkpARw&usqp=CAU"
-            alt="Card image cap">
+        <img class=" img-fluid show-image" src="/uploads/images/<%= blog.img %>" alt="Card image cap">
         <div class="card-body">
             <h1 class="card-title">
                 <%= blog.title %>
